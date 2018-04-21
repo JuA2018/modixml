@@ -42,7 +42,7 @@ public class RetrofitService {
             PultusORMCondition condition = new PultusORMCondition.Builder()
                     .sort("token", PultusORMQuery.Sort.DESCENDING)
                     .build();
-            List<Object> token = new DBAdapter().loginORM.find(new LoginDB(), condition);
+            List<Object> token = new DBAdapter().getLoginORM().find(new LoginDB(), condition);
             Request request = original.newBuilder()
                     .header("authorization", token.get(0).toString())
                     .method(original.method(), original.body())
@@ -51,7 +51,7 @@ public class RetrofitService {
         });
 
         OkHttpClient client = httpClient.build();
-        Retrofit retrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)

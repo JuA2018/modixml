@@ -37,7 +37,6 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
         loginid = findViewById(R.id.loginid)
         loginpasswd = findViewById(R.id.loginpasswd)
         view = window.decorView.rootView
-        DBAdapter(applicationContext).loginDBCreate()
         loginbutton.setOnClickListener(this)
         signbutton.setOnClickListener(this)
     }
@@ -60,7 +59,7 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
                             val logindb = LoginDB()
                             logindb.token = response.body()!!.token
                             logindb.user = response.body()!!.user
-                            DBAdapter().loginORM.save(logindb)
+                            DBAdapter(applicationContext).loginORM.save(logindb)
                             Snackbar.make(view,"로그인 성공", Snackbar.LENGTH_SHORT).show()
                             startActivity(Intent(applicationContext, MainActivity::class.java))
                         }else{
