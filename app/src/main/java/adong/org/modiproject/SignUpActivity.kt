@@ -6,11 +6,9 @@ import adong.org.modiproject.service.RetrofitService
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,12 +42,13 @@ class SignUpActivity : AppCompatActivity(),View.OnClickListener {
         val Srpwd = signpassword2.text.toString()
         if(Spwd.equals(Srpwd)){
             val user = User(Sid, Spwd)
-            apiservice = RetrofitService().retrofit.create(APIService::class.java)
+            apiservice = RetrofitService.getClient().create(APIService::class.java)
             val call : Call<User> = apiservice.signup(user)
             call.enqueue(object : Callback<User>{
                 override fun onResponse(call: Call<User>?, response: Response<User>?) {
                     if (response!!.isSuccessful) {
                         Snackbar.make(view, "회원가입 완료", Snackbar.LENGTH_SHORT).show()
+                        finish()
                     } else {
                         Snackbar.make(view, response.message(), Snackbar.LENGTH_SHORT).show()
                     }
