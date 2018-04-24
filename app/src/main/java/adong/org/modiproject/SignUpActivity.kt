@@ -43,7 +43,7 @@ class SignUpActivity : AppCompatActivity(),View.OnClickListener {
         val Srpwd = signpassword2.text.toString()
         if(Spwd.equals(Srpwd)){
             val user = User(Sid, Spwd)
-            apiservice = RetrofitService.getClient().create(APIService::class.java)
+            apiservice = RetrofitService().getClient().create(APIService::class.java)
             val call : Call<User> = apiservice.signup(user)
             call.enqueue(object : Callback<User>{
                 override fun onResponse(call: Call<User>?, response: Response<User>?) {

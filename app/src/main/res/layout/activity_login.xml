@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -46,20 +47,18 @@
             android:id="@+id/loginpassword"
             android:layout_width="match_parent"
             android:layout_height="41dp"
-            android:paddingLeft="5dp"
-            android:layout_marginRight="60dp"
-            android:layout_marginLeft="60dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
             android:background="#FFFDC80E"
-            android:inputType="textPassword"
             android:hint="비밀번호 입력"
-            android:textColorHint="#ff000000"
+            android:inputType="textPassword"
+            android:paddingLeft="5dp"
             android:textColor="#000"
-            android:textCursorDrawable="@color/black"
-            />
+            android:textColorHint="#ff000000"
+            android:textCursorDrawable="@color/black" />
 
     </android.support.design.widget.TextInputLayout>
-
 
     <Button
         android:id="@+id/loginbutton"
