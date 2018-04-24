@@ -29,8 +29,8 @@
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
             android:layout_marginTop="50dp"
+            android:inputType="text"
             android:background="#FFFDC80E"
-
             android:textColor="#000"
             android:hint="아이디"
             android:paddingLeft="5dp"
@@ -51,6 +51,7 @@
             android:paddingLeft="5dp"
             android:layout_marginRight="60dp"
             android:layout_marginLeft="60dp"
+            android:inputType="textPassword"
             android:background="#FFFDC80E"
             android:hint="비밀번호"
             android:textCursorDrawable="@color/colorPrimaryDark"/>
@@ -70,6 +71,7 @@
             android:paddingLeft="5dp"
             android:layout_marginRight="60dp"
             android:layout_marginLeft="60dp"
+            android:inputType="textPassword"
             android:background="#FFFDC80E"
             android:hint="비밀번호 확인"
             android:textCursorDrawable="@color/colorPrimaryDark"/>

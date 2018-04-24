@@ -2,12 +2,7 @@ package adong.org.modiproject.service;
 
 import java.util.List;
 
-import adong.org.modiproject.adapter.DBAdapter;
-import adong.org.modiproject.adapter.LoginDB;
 import adong.org.modiproject.data.Token;
-import ninja.sakib.pultusorm.core.PultusORM;
-import ninja.sakib.pultusorm.core.PultusORMCondition;
-import ninja.sakib.pultusorm.core.PultusORMQuery;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -39,12 +34,9 @@ public class RetrofitService {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(chain -> {
             Request original = chain.request();
-            PultusORMCondition condition = new PultusORMCondition.Builder()
-                    .sort("token", PultusORMQuery.Sort.DESCENDING)
-                    .build();
-            List<Object> token = new DBAdapter().getLoginORM().find(new LoginDB(), condition);
+            Token token = Token.last(Token.class);
             Request request = original.newBuilder()
-                    .header("authorization", token.get(0).toString())
+                    .header("authorization", token.getData())
                     .method(original.method(), original.body())
                     .build();
             return chain.proceed(request);

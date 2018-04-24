@@ -47,4 +47,7 @@ dependencies {
 
     //pultusORM
     implementation 'ninja.sakib:PultusORM:v1.7'
+
+    //Sugarrecode
+    implementation 'com.github.satyan:sugar:1.5'
 }

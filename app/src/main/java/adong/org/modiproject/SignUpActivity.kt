@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,7 +48,7 @@ class SignUpActivity : AppCompatActivity(),View.OnClickListener {
             call.enqueue(object : Callback<User>{
                 override fun onResponse(call: Call<User>?, response: Response<User>?) {
                     if (response!!.isSuccessful) {
-                        Snackbar.make(view, "회원가입 완료", Snackbar.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "회원가입 완료", Toast.LENGTH_SHORT).show()
                         finish()
                     } else {
                         Snackbar.make(view, response.message(), Snackbar.LENGTH_SHORT).show()

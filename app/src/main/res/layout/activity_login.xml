@@ -21,19 +21,19 @@
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputEditText
-            android:textColorHint="#ff000000"
             android:id="@+id/loginid"
             android:layout_width="match_parent"
             android:layout_height="41dp"
             android:layout_gravity="center"
-            android:layout_marginRight="60dp"
             android:layout_marginLeft="60dp"
-            android:paddingLeft="5dp"
+            android:layout_marginRight="60dp"
             android:background="#FFFDC80E"
-            android:textCursorDrawable="@color/black"
             android:hint="아이디 입력"
+            android:inputType="text"
+            android:paddingLeft="5dp"
             android:textColor="#000"
-            />
+            android:textColorHint="#ff000000"
+            android:textCursorDrawable="@color/black" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -43,18 +43,20 @@
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputEditText
-            android:textColorHint="#ff000000"
-            android:textColor="#000"
-            android:textCursorDrawable="@color/black"
             android:id="@+id/loginpassword"
             android:layout_width="match_parent"
             android:layout_height="41dp"
-            android:layout_gravity="center"
             android:paddingLeft="5dp"
             android:layout_marginRight="60dp"
             android:layout_marginLeft="60dp"
+            android:layout_gravity="center"
             android:background="#FFFDC80E"
-            android:hint="비밀번호 입력" />
+            android:inputType="textPassword"
+            android:hint="비밀번호 입력"
+            android:textColorHint="#ff000000"
+            android:textColor="#000"
+            android:textCursorDrawable="@color/black"
+            />
 
     </android.support.design.widget.TextInputLayout>
 
