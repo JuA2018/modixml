@@ -1,11 +1,12 @@
 package adong.org.modiproject
 
+import adong.org.modiproject.data.Status
 import adong.org.modiproject.data.User
 import adong.org.modiproject.service.APIService
 import adong.org.modiproject.service.RetrofitService
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -44,19 +45,20 @@ class SignUpActivity : AppCompatActivity(),View.OnClickListener {
         if(Spwd.equals(Srpwd)){
             val user = User(Sid, Spwd)
             apiservice = RetrofitService().getClient().create(APIService::class.java)
-            val call : Call<User> = apiservice.signup(user)
-            call.enqueue(object : Callback<User>{
-                override fun onResponse(call: Call<User>?, response: Response<User>?) {
-                    if (response!!.isSuccessful) {
+            val call : Call<Status> = apiservice.signup(user)
+            call.enqueue(object : Callback<Status>{
+                override fun onResponse(call: Call<Status>?, response: Response<Status>?) {
+                    val status = response!!.body()!!.status
+                    if (status.success) {
                         Toast.makeText(applicationContext, "회원가입 완료", Toast.LENGTH_SHORT).show()
                         finish()
                     } else {
-                        Snackbar.make(view, response.message(), Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(view, status.message, Snackbar.LENGTH_SHORT).show()
                     }
                 }
 
-                override fun onFailure(call: Call<User>?, t: Throwable?) {
-                    Snackbar.make(view, t!!.message!!, Snackbar.LENGTH_SHORT).show()
+                override fun onFailure(call: Call<Status>?, t: Throwable?) {
+                    Toast.makeText(applicationContext, t!!.message!!, Toast.LENGTH_SHORT).show()
                 }
             })
         } else {
