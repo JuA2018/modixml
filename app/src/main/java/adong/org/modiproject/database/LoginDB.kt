@@ -11,8 +11,8 @@ class LoginDB {
 }
 
 /*
-val logindb = LoginDB()
-                            logindb.token = response.body()!!.token.data
-                            logindb.userid = response.body()!!.user.username
-                            DBAdapter().loginDB.save(logindb)
+    val logindb = LoginDB()
+    logindb.token = response.body()!!.token.data
+    logindb.userid = response.body()!!.user.username
+    DBAdapter().loginDB.save(logindb)
  */
