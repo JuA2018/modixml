@@ -7,11 +7,13 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface APIService {
+interface APIService<T> {
 
     @POST("users")
     fun signup(@Body user : User) : Call<Status>
 
     @POST("sign")
     fun login(@Body user: User) : Call<UserGet>
+
+
 }

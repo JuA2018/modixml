@@ -7,6 +7,7 @@ import adong.org.modiproject.service.RetrofitService
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -18,13 +19,10 @@ import retrofit2.Response
 class SignUpActivity : AppCompatActivity(),View.OnClickListener {
 
     val TAG = "SignUpActivity"
-
     lateinit var signupid : EditText
     lateinit var signpassword1 : EditText
     lateinit var signpassword2 : EditText
     lateinit var signupbutton : Button
-
-    lateinit var apiservice : APIService
     lateinit var view : View
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,8 +42,8 @@ class SignUpActivity : AppCompatActivity(),View.OnClickListener {
         val Srpwd = signpassword2.text.toString()
         if(Spwd.equals(Srpwd)){
             val user = User(Sid, Spwd)
-            apiservice = RetrofitService().getClient().create(APIService::class.java)
-            val call : Call<Status> = apiservice.signup(user)
+            val apiservice = RetrofitService().creatService(APIService::class.java)
+            val call = apiservice.signup(user)
             call.enqueue(object : Callback<Status>{
                 override fun onResponse(call: Call<Status>?, response: Response<Status>?) {
                     val status = response!!.body()!!.status
@@ -58,7 +56,8 @@ class SignUpActivity : AppCompatActivity(),View.OnClickListener {
                 }
 
                 override fun onFailure(call: Call<Status>?, t: Throwable?) {
-                    Toast.makeText(applicationContext, t!!.message!!, Toast.LENGTH_SHORT).show()
+                    Snackbar.make(view, "알 수 없는 오류가 발생 했습니다.", Snackbar.LENGTH_SHORT).show()
+                    Log.d(TAG, t!!.message)
                 }
             })
         } else {

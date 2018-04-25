@@ -20,12 +20,11 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity(),View.OnClickListener {
 
+    val TAG = "LoginActivity"
     lateinit var loginid : EditText
     lateinit var loginpassword : EditText
     lateinit var loginbutton : Button
     lateinit var signbutton : Button
-    lateinit var apiservice : APIService
-
     lateinit var view : View
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +49,7 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
                 startActivity(signup)
             }
             R.id.loginbutton -> {
-                apiservice = RetrofitService().getClient().create(APIService :: class.java)
+                val apiservice = RetrofitService().creatService(APIService :: class.java)
                 val call = apiservice.login(user)
                 call.enqueue(object : Callback<UserGet> {
                     override fun onResponse(call: Call<UserGet>?, response: Response<UserGet>?) {
@@ -58,6 +57,7 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
                         if (status.success){
                             Toast.makeText(applicationContext,"로그인 성공", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(applicationContext, MainActivity::class.java))
+                            finish()
                         }else{
                             Snackbar.make(view, status.message, Snackbar.LENGTH_LONG).show()
                         }
@@ -65,9 +65,8 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
 
                     override fun onFailure(call: Call<UserGet>?, t: Throwable?) {
                         Snackbar.make(view, "알수 없는 오류가 발생했습니다.", Snackbar.LENGTH_LONG).show()
-                        Log.d("LoginActivity",t!!.message)
+                        Log.d(TAG,t!!.message)
                     }
-
                 })
             }
         }
