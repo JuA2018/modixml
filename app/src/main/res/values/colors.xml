@@ -27,4 +27,9 @@
 
     <color name="black">#000000</color>
     <color name="background_color">#FFF8B948</color>
+
+    <color name="modi_color">#4CD28F</color>
+
+    <color name="white">#ffffff</color>
+
 </resources>
