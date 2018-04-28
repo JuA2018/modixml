@@ -5,6 +5,7 @@ import adong.org.modiproject.data.User
 import adong.org.modiproject.data.UserGet
 import adong.org.modiproject.service.APIService
 import adong.org.modiproject.service.RetrofitService
+import adong.org.modiproject.util.SharedPreferenceUtil
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -56,6 +57,7 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
                         val status : Result = response!!.body()!!.status
                         if (status.success){
                             Toast.makeText(applicationContext,"로그인 성공", Toast.LENGTH_SHORT).show()
+                            SharedPreferenceUtil.savePreference()
                             startActivity(Intent(applicationContext, MainActivity::class.java))
                             finish()
                         }else{

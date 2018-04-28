@@ -1,5 +1,6 @@
 package adong.org.modiproject
 
+import adong.org.modiproject.util.SharedPreferenceUtil
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -11,9 +12,9 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         Handler().postDelayed({
-            val login = Intent(applicationContext, LoginActivity::class.java)
-            startActivity(login)
-            finish()
+            val token = SharedPreferenceUtil.getPreference()
+            if(!token.equals("")) startActivity(Intent(applicationContext, MainActivity::class.java))
+            else startActivity(Intent(applicationContext, LoginActivity::class.java))
         }, 1500)
     }
 }

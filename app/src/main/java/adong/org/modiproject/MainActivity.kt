@@ -1,5 +1,6 @@
 package adong.org.modiproject
 
+import adong.org.modiproject.util.SharedPreferenceUtil
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         return when (item!!.itemId) {
             R.id.action_logout -> {
                 Toast.makeText(applicationContext, "로그아웃", Toast.LENGTH_SHORT).show()
+                SharedPreferenceUtil.removePreference()
                 return true
             }
             R.id.action_abote -> {

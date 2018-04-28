@@ -8,9 +8,8 @@ import android.support.v7.app.AppCompatActivity
 object SharedPreferenceUtil : AppCompatActivity() {
     val preferences = getSharedPreferences("modi", Context.MODE_PRIVATE)
     val editor = preferences.edit()
-    fun getPreference(){
-        preferences.getString("token", "")
-    }
+    fun getPreference() : String = preferences.getString("token", "")
+
     fun savePreference(){
         editor.putString("token", Token().data)
         editor.commit()
