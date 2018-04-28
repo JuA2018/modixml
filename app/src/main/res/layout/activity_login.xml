@@ -1,86 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFFDC80E"
+    android:background="@drawable/loginbackground"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".LoginActivity">
 
-    <ImageView
-        android:layout_width="166dp"
-        android:layout_height="157dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/mainicon" />
-
     <android.support.design.widget.TextInputLayout
-        android:layout_marginTop="50dp"
-        android:id="@+id/meterial1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="300dp">
 
         <android.support.design.widget.TextInputEditText
+            android:textCursorDrawable="@null"
             android:id="@+id/loginid"
             android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            android:background="#FFFDC80E"
-            android:hint="아이디 입력"
-            android:inputType="text"
-            android:paddingLeft="5dp"
-            android:textColor="#000"
-            android:textColorHint="#ff000000"
-            android:textCursorDrawable="@color/black" />
+            android:layout_height="46dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:hint="ID"
+            android:paddingLeft="8dp"
+            android:textColor="#fff"
+            android:textSize="18dp" />
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/material2"
+        android:id="@+id/loginpassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="240dp">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/loginpassword"
+            android:textCursorDrawable="@null"
             android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            android:background="#FFFDC80E"
-            android:hint="비밀번호 입력"
-            android:inputType="textPassword"
-            android:paddingLeft="5dp"
-            android:textColor="#000"
-            android:textColorHint="#ff000000"
-            android:textCursorDrawable="@color/black" />
+            android:layout_height="43dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:hint="Password"
+            android:paddingLeft="8dp"
+            android:textColor="#fff"
+            android:textSize="18dp" />
 
     </android.support.design.widget.TextInputLayout>
 
     <Button
+        android:background="@drawable/buttontawon"
         android:id="@+id/loginbutton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="60dp"
-        android:layout_marginLeft="60dp"
-        android:background="#34495e"
-        android:text="로그인"
-        android:textColor="#fff" />
+        android:layout_height="43dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="130dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:text="Login"
+        android:textColor="#fff"
+        android:textSize="17dp" />
 
     <Button
         android:id="@+id/signbutton"
-        android:layout_width="143dp"
-        android:layout_height="47dp"
-        android:layout_marginLeft="165dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="130dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="55dp"
         android:background="#00ff0000"
         android:text="계정이 없으신가요?"
-        android:textSize="13dp" />
+        android:textColor="#fff" />
 
-</LinearLayout>
+</RelativeLayout>

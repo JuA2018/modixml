@@ -19,7 +19,7 @@ class RetrofitService {
 
     lateinit var retrofit : Retrofit
 
-    fun <T> creatService(serviceClass : Class<T>) : T {
+    fun <T> creatService(serviceClass : Class<T>) : T{
         retrofit = builder.build()
         return retrofit.create(serviceClass)
     }
@@ -28,7 +28,6 @@ class RetrofitService {
             val interceptor = AuthenticationInterceptor(Token().data)
             if (!httpclient.interceptors().contains(interceptor)){
                 httpclient.addInterceptor(interceptor)
-
                 builder.client(httpclient.build())
                 retrofit = builder.build()
             }

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#000000</color>
+    <!--엑션바-->
+    <color name="colorPrimary">#4CD28F</color>
+    <!--엑션바 상단-->
+    <color name="colorPrimaryDark">#4CD28F</color>
+    <!--엑션바 아이콘-->
+    <color name="colorAccent">#ffffff</color>
 
     <color name="fbutton_color_turquoise">#1abc9c</color>
     <color name="fbutton_color_green_sea">#16a085</color>

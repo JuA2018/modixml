@@ -1,10 +1,10 @@
 package adong.org.modiproject
 
+import adong.org.modiproject.util.CusTomBarUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.TextView
@@ -17,13 +17,9 @@ class WriteActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //엑션바 설정
-        val actionBar = supportActionBar
-        actionBar!!.setIcon(R.drawable.backbutton)
-        actionBar.setDisplayUseLogoEnabled(true)
-        actionBar.setDisplayHomeAsUpEnabled(true)
-        actionBar.setTitle("일기작성")
         setContentView(R.layout.activity_write)
+
+        CusTomBarUtil().creatcustombar(applicationContext,R.layout.custom_actionbar, supportActionBar)
 
         textSize = findViewById(R.id.textsize)
         content = findViewById(R.id.editcontent)
@@ -44,15 +40,11 @@ class WriteActivity : AppCompatActivity() {
                     content.setText(str)
                     content.setSelection(start)
                 } else
-                    textSize.setText(s.length)
+                    textSize.setText(s.length.toString())
             }
         })
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.writeactionbar_confirm, menu)
-        return true
-    }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when(item!!.itemId) {

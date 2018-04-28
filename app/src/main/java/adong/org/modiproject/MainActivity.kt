@@ -18,9 +18,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        toolbar = findViewById(R.id.maintoolbar)
-        setSupportActionBar(toolbar)
-        toolbar.setTitleTextColor(resources.getColor(R.color.white))
 
         fab = findViewById(R.id.fab)
         fab.setOnClickListener({
