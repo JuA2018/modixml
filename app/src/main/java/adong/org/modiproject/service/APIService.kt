@@ -15,5 +15,4 @@ interface APIService<T> {
     @POST("sign")
     fun login(@Body user: User) : Call<UserGet>
 
-
 }

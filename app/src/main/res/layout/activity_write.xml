@@ -27,13 +27,27 @@
         android:layout_height="100dp"
         android:layout_marginTop="30dp"/>
 
-    <TextView
-        android:id="@+id/textsize"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
+        android:orientation="horizontal"
         android:layout_below="@+id/editcontent"
-        android:layout_marginTop="10dp"/>
+        android:gravity="right"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="4dp"
+        >
+
+        <TextView
+            android:id="@+id/textsize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/ 2000" />
+
+    </LinearLayout>
 
 </RelativeLayout>
