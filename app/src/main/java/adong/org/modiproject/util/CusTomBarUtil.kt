@@ -7,18 +7,21 @@ import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 
-class CusTomBarUtil : AppCompatActivity() {
-    fun creatcustombar(context : Context, layout : Int, actionBar: ActionBar?){
-
+class CusTomBarUtil(val context : Context, val layout : Int, val actionBar: ActionBar?) : AppCompatActivity() {
+    lateinit var actionbarview : View
+    fun creatcustombar(){
         actionBar!!.setDisplayShowCustomEnabled(true)
         actionBar.setDisplayHomeAsUpEnabled(false)
         actionBar.setDisplayShowHomeEnabled(false)
         actionBar.setDisplayShowTitleEnabled(false)
 
-        val actionbarview : View = LayoutInflater.from(context).inflate(layout, null)
+        actionbarview = LayoutInflater.from(context).inflate(layout, null)
         actionBar.setCustomView(actionbarview)
 
         val parent : Toolbar = actionbarview.parent as Toolbar
         parent.setContentInsetsAbsolute(0, 0)
     }
+
+    fun getcustomlayoutview() : View = actionbarview
+
 }
