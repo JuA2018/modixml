@@ -14,4 +14,4 @@ data class Diaries(val tags : List<String>, val content : String)
 data class DiariesGet(val status : Result, val diaries : Diaries)
 
 //mainactivity listview data class
-class ListData(val day : String="", val tag : String="", val diary : String="")
+class ListData(val days : String="", val tags : String="", val contents : String="")

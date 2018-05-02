@@ -2,50 +2,48 @@ package adong.org.modiproject.Adapter
 
 import adong.org.modiproject.R
 import adong.org.modiproject.data.ListData
-import android.content.Context
+import android.support.v7.widget.CardView
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.ListView
 import android.widget.TextView
 
-class MyListAdapter(val con : Context, val arrayList: ArrayList<ListData>) : BaseAdapter() {
+class MyAdapter(val adapterlist : ArrayList<ListData>) : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
-    val TAG = "MyListAdapter"
-
-    override fun getItem(position: Int): Any {
-        return arrayList[position]
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val layoutview = LayoutInflater.from(parent.context).inflate(R.layout.image_activity, parent,false)
+        val viewHolder = ViewHolder(itemview = layoutview)
+        return viewHolder
     }
 
-    override fun getItemId(position: Int): Long {
-        return 0
+    override fun getItemCount(): Int = adapterlist.size
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.days.setText(adapterlist.get(position).days)
+        holder.tags.setText(adapterlist.get(position).tags)
+        holder.contents.setText(adapterlist.get(position).contents)
+    }
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+    }
+
+    class ViewHolder(itemview : View) : RecyclerView.ViewHolder(itemview) {
+        var cv : CardView
+        var days : TextView
+        var tags : TextView
+        var contents : TextView
+
+        init {
+            cv = itemview.findViewById(R.id.cv)
+            days = itemview.findViewById(R.id.days)
+            tags = itemview.findViewById(R.id.tags)
+            contents = itemview.findViewById(R.id.contents)
+        }
+
     }
 
 
-    override fun getCount(): Int {
-        return arrayList.size
-    }
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-
-        //R.layout.image_activity접근
-        val layoutview : View = LayoutInflater.from(con).inflate(R.layout.image_activity, null)
-
-        val days : TextView = layoutview.findViewById(R.id.days)
-        val tags : TextView = layoutview.findViewById(R.id.tags)
-        val contents : TextView = layoutview.findViewById(R.id.contents)
-        val listData : ListData = arrayList.get(position)
-
-        //값넣기
-        days.setText(listData.day)
-        tags.setText(listData.tag)
-        contents.setText(listData.diary)
-        return layoutview
-    }
-
-    fun setAdapter(adapter : MyListAdapter, listView : ListView){
-
-    }
 }
 
