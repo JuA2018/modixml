@@ -7,32 +7,50 @@
     android:orientation="vertical"
     tools:context=".WriteActivity">
 
-    <EditText
-        android:id="@+id/edittag"
-        android:layout_height="wrap_content"
+    <TextView
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp"
-        android:hint="하루의 기분을 태그로 남겨주세요!"
+        android:layout_marginRight="25dp"
+        android:text="@string/writetagmessage"
+        android:textSize="18sp"
         />
+
+    <me.originqiu.library.EditTag
+        android:id="@+id/setedittag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        app:tag_layout="@layout/view_tag"
+        app:input_layout="@layout/view_tag_set"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/writecontentmessage"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/editcontent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="left"
-        android:hint="일기를 작성해주세요!"
-        android:layout_below="@+id/edittag"
+        android:background="@null"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="30dp"/>
+        android:maxHeight="250dp"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/editcontent"
         android:gravity="right"
         android:layout_marginEnd="25dp"
         android:layout_marginTop="4dp"

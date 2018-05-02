@@ -5,4 +5,7 @@
     <string name="action_logout">로그아웃</string>
     <string name="action_abote">도움말</string>
 
+    <string name="writetagmessage">하루의 기분을 태그로 남겨주세요!</string>
+    <string name="writecontentmessage">일기를 작성해주세요!</string>
+
 </resources>

@@ -9,6 +9,9 @@ data class Token(val data: String = "")
 data class Status(val status: Result, val user: User)
 data class UserGet(val status : Result, val user : User, val token : Token)
 
-//포스팅
+//다이얼리 포스트
 data class Diaries(val tags : List<String>, val content : String)
 data class DiariesGet(val status : Result, val diaries : Diaries)
+
+//mainactivity listview data class
+class ListData(val day : String="", val tag : String="", val diary : String="")

@@ -5,17 +5,22 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import me.originqiu.library.EditTag
 
 class WriteActivity : AppCompatActivity() {
 
-    lateinit var edittag : EditText
+    val TAG = WriteActivity::class.toString()
+
+    lateinit var setedittag : EditTag
     lateinit var textSize: TextView
     lateinit var content: EditText
+    val taglist: MutableList<String> = ArrayList()
 
     lateinit var customlayoutview : View
 
@@ -43,7 +48,6 @@ class WriteActivity : AppCompatActivity() {
 
         textSize = findViewById(R.id.textsize)
         content = findViewById(R.id.editcontent)
-        edittag = findViewById(R.id.edittag)
 
         content.addTextChangedListener(object : TextWatcher {
             var str: String = ""
@@ -65,7 +69,18 @@ class WriteActivity : AppCompatActivity() {
             }
         })
 
-
+        setedittag = findViewById(R.id.setedittag)
+        setedittag.setTagAddCallBack(object : EditTag.TagAddCallback{
+            override fun onTagAdd(p0: String?): Boolean {
+                taglist.add(p0!!)
+                return true
+            }
+        })
+        setedittag.setTagDeletedCallback(object : EditTag.TagDeletedCallback{
+            override fun onTagDelete(p0: String?) {
+                Log.d(TAG, "$p0 삭제")
+            }
+        })
 
     }
 

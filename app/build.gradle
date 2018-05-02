@@ -45,6 +45,5 @@ dependencies {
     implementation 'ninja.sakib:PultusORM:v1.7'
 
     //tag
-    implementation 'com.github.pchmn:MaterialChipsInput:1.0.8'
-
+    implementation 'com.github.qiugang:EditTag:v1.2.4-beta2'
 }

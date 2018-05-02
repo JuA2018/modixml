@@ -9,7 +9,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/downloadicon"
+        android:icon="@drawable/aboutmark"
         android:label="MoDi"
         tools:replace="label"
         android:roundIcon="@mipmap/ic_launcher_round"

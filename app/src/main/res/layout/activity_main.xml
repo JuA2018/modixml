@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <include layout="@layout/activity_list"/>
+    <include
+        android:id="@+id/includelist"
+        layout="@layout/activity_list"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
