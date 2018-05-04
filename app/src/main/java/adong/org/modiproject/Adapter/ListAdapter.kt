@@ -1,15 +1,16 @@
 package adong.org.modiproject.Adapter
 
 import adong.org.modiproject.R
-import adong.org.modiproject.data.ListData
+import adong.org.modiproject.data.Diarielist
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import me.originqiu.library.EditTag
 
-class MyAdapter(val adapterlist : ArrayList<ListData>) : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class MyAdapter(val adapterlist : ArrayList<Diarielist>) : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutview = LayoutInflater.from(parent.context).inflate(R.layout.image_activity, parent,false)
@@ -21,7 +22,7 @@ class MyAdapter(val adapterlist : ArrayList<ListData>) : RecyclerView.Adapter<My
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.days.setText(adapterlist.get(position).days)
-        holder.tags.setText(adapterlist.get(position).tags)
+        holder.tags.tagList = adapterlist.get(position).tags
         holder.contents.setText(adapterlist.get(position).contents)
     }
 
@@ -32,7 +33,7 @@ class MyAdapter(val adapterlist : ArrayList<ListData>) : RecyclerView.Adapter<My
     class ViewHolder(itemview : View) : RecyclerView.ViewHolder(itemview) {
         var cv : CardView
         var days : TextView
-        var tags : TextView
+        var tags : EditTag
         var contents : TextView
 
         init {

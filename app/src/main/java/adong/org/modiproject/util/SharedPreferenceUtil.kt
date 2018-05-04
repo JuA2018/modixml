@@ -1,27 +1,26 @@
 package adong.org.modiproject.util
 
-import adong.org.modiproject.data.Token
 import android.content.Context
 import android.content.SharedPreferences
-import android.support.v7.app.AppCompatActivity
 
 //간단한 SQLite
-object SharedPreferenceUtil : AppCompatActivity() {
-    lateinit var preferences : SharedPreferences
-    lateinit var editor : SharedPreferences.Editor
-    fun creatPreference(){
-        preferences = getSharedPreferences("modi", Context.MODE_PRIVATE)
-        editor = preferences.edit()
-    }
-    fun getPreference() : String = preferences.getString("token", "")
+object SharedPreferenceUtil {
 
-    fun savePreference(){
-        creatPreference()
-        editor.putString("token", Token().data)
+    fun getPreference(context: Context) : String {
+        val preferences : SharedPreferences = context.getSharedPreferences("modi", Context.MODE_PRIVATE)
+        return preferences.getString("token", "")
+    }
+
+    fun savePreference(context: Context, value : String){
+        val preferences : SharedPreferences = context.getSharedPreferences("modi", Context.MODE_PRIVATE)
+        val editor = preferences.edit()
+        editor.putString("token", value)
         editor.commit()
     }
-    fun removePreference(){
-        creatPreference()
+
+    fun removePreference(context: Context){
+        val preferences : SharedPreferences = context.getSharedPreferences("modi", Context.MODE_PRIVATE)
+        val editor = preferences.edit()
         editor.remove("token")
         editor.commit()
     }

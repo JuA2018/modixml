@@ -57,7 +57,8 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
                         val status : Result = response!!.body()!!.status
                         if (status.success){
                             Toast.makeText(applicationContext,"로그인 성공", Toast.LENGTH_SHORT).show()
-                            SharedPreferenceUtil.savePreference()
+                            val token = response.body()!!.token.data
+                            SharedPreferenceUtil.savePreference(applicationContext, token)
                             startActivity(Intent(applicationContext, MainActivity::class.java))
                             finish()
                         }else{

@@ -1,7 +1,13 @@
 package adong.org.modiproject
 
+import adong.org.modiproject.data.Diaries
+import adong.org.modiproject.data.DiariesGet
+import adong.org.modiproject.service.APIService
+import adong.org.modiproject.service.RetrofitService
 import adong.org.modiproject.util.CusTomBarUtil
+import adong.org.modiproject.util.SharedPreferenceUtil
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,6 +18,11 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import me.originqiu.library.EditTag
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 class WriteActivity : AppCompatActivity() {
 
@@ -20,7 +31,8 @@ class WriteActivity : AppCompatActivity() {
     lateinit var setedittag : EditTag
     lateinit var textSize: TextView
     lateinit var content: EditText
-    val taglist: MutableList<String> = ArrayList()
+    val taglist : MutableList<String> = ArrayList()
+    val tagstringbuffe = StringBuffer()
 
     lateinit var customlayoutview : View
 
@@ -72,7 +84,7 @@ class WriteActivity : AppCompatActivity() {
         setedittag = findViewById(R.id.setedittag)
         setedittag.setTagAddCallBack(object : EditTag.TagAddCallback{
             override fun onTagAdd(p0: String?): Boolean {
-                taglist.add(p0!!)
+                tagstringbuffe.append("${p0},")
                 return true
             }
         })
@@ -85,9 +97,30 @@ class WriteActivity : AppCompatActivity() {
     }
 
     fun finishdiary(){
-        Toast.makeText(applicationContext,"ㅇㅅㅇ",Toast.LENGTH_SHORT).show()
-        finish()
+        val day = System.currentTimeMillis()
+        val date = Date(day)
+        val format = SimpleDateFormat("yyyy / MM.dd")
+        val dayDate = format.format(date)
+        val diary = Diaries(tagstringbuffe.toString(), content.text.toString(), dayDate)
+        Log.d(TAG, "${tagstringbuffe}, ${content.text}")
+        val token = SharedPreferenceUtil.getPreference(applicationContext)
+        val apiService = RetrofitService().creatService(APIService :: class.java, token)
+        val call = apiService.diarywrite(diary)
+        call.enqueue(object : Callback<DiariesGet>{
+            override fun onFailure(call: Call<DiariesGet>?, t: Throwable?) {
+                Snackbar.make(window.decorView.rootView, "알 수 없는 오류가 발생했습니다.", Snackbar.LENGTH_SHORT).show()
+                Log.d("WriteAcitivity", t!!.message)
+            }
+
+            override fun onResponse(call: Call<DiariesGet>?, response: Response<DiariesGet>?) {
+                val status = response!!.body()!!.status
+                if(status.success){
+                    Toast.makeText(applicationContext, "일기 작성 완료", Toast.LENGTH_SHORT).show()
+                    finish()
+                } else {
+                    Snackbar.make(window.decorView.rootView, status.message, Snackbar.LENGTH_SHORT).show()
+                }
+            }
+        })
     }
-
-
 }

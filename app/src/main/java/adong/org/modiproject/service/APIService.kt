@@ -1,10 +1,9 @@
 package adong.org.modiproject.service
 
-import adong.org.modiproject.data.Status
-import adong.org.modiproject.data.User
-import adong.org.modiproject.data.UserGet
+import adong.org.modiproject.data.*
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface APIService<T> {
@@ -14,5 +13,11 @@ interface APIService<T> {
 
     @POST("sign")
     fun login(@Body user: User) : Call<UserGet>
+
+    @POST("write")
+    fun diarywrite(@Body diaries: Diaries) : Call<DiariesGet>
+
+    @GET("write")
+    fun getdiary() : Call<DiariesGet>
 
 }
